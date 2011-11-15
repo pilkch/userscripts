@@ -2,7 +2,7 @@
 // @name          Plain Hacker News
 // @namespace     http://chris.iluo.net/userscripts/hackernews
 // @description   Removes the slabs of bright orange
-// @include       http://news.ycombinator.com/*
+// @match         http://news.ycombinator.com/*
 // ==/UserScript==
 
 // Change all cells with a background colour of orange to grey
