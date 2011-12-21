@@ -2,6 +2,7 @@
 // @name          ProgramTrack Default Rating
 // @namespace     http://chris.iluo.net/userscripts/programtrack
 // @description   Pick a default rating of Good for ProgramTrack code reviews
+// @version        1.0
 // @match         http://canberra.nchsoftware.com:120/codereview?id=*
 // ==/UserScript==
 

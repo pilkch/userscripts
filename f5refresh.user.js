@@ -2,6 +2,7 @@
 // @name           F5 Refresh
 // @namespace      http://chris.iluo.net/userscripts/f5refresh
 // @description    Allow F5 and Ctrl+F5 to refresh the page
+// @version        1.0
 // @include        *
 // ==/UserScript==
 

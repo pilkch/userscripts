@@ -2,6 +2,7 @@
 // @name          Plain Hacker News
 // @namespace     http://chris.iluo.net/userscripts/hackernews
 // @description   Removes the slabs of bright orange
+// @version        1.0
 // @match         http://news.ycombinator.com/*
 // ==/UserScript==
 
