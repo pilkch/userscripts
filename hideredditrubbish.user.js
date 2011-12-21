@@ -14,6 +14,7 @@
 var blacklist = new Array();
 blacklist.push("C#");
 blacklist.push("iPhone");
+blacklist.push("iOS");
 blacklist.push("UDK");
 blacklist.push("XNA");
 
