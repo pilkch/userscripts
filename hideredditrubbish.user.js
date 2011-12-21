@@ -22,7 +22,7 @@ var things = siteTable.getElementsByClassName('thing');
 
 // Convert all blacklist words to lower case
 var nBlacklistWords = blacklist.length;
-for (iBlacklistWords = 0; iBlacklistWords < nBlacklistWord; iBlacklistWords++) {
+for (iBlacklistWords = 0; iBlacklistWords < nBlacklistWords; iBlacklistWords++) {
   blacklist[iBlacklistWords] = blacklist[iBlacklistWords].toLowerCase();
 }
 
