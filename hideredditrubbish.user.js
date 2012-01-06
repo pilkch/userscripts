@@ -16,6 +16,7 @@ blacklist.push("C#");
 blacklist.push("iPhone");
 blacklist.push("iOS");
 blacklist.push("UDK");
+blacklist.push("Unity3d");
 blacklist.push("XNA");
 
 var siteTable = document.getElementById("siteTable");
