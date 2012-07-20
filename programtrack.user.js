@@ -8,16 +8,13 @@
 
 // Set the default rating
 var rating = document.getElementById('103');
-if (rating) { // Avoid errors
-  rating.value = "2$Good. It's what we expect at NCH.";
-}
+if (rating) rating.value = "2$Good. It's what we expect at NCH.";
 
 // Set the default button
 // This element does not have an id set so we hope that it is always the first element named "submit"
 var elements = document.getElementsByName("submit");
-if (elements.length != 0) {
-  elements[0].focus();
-}
+if (elements.length != 0) elements[0].focus();
 
 // Scroll to the top of the window so that we can read through the code review
 scroll(0, 0);
+
