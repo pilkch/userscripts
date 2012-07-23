@@ -36,6 +36,7 @@ function ShowWarningOnPage()
 // Shows a lightbox warning that covers the whole screen
 function ShowWarningLightbox()
 {
+  // Dark disabled area
   var lightBoxDisabled = document.createElement('div');
   lightBoxDisabled.id = 'lightBoxDisabled';
   lightBoxDisabled.setAttribute('style', 'background-color: #000000; -moz-opacity: 0.75');
@@ -51,6 +52,7 @@ function ShowWarningLightbox()
   }, true);
   document.body.appendChild(lightBoxDisabled);
 
+  // Warning overlay
   var lightBoxWarning = document.createElement('div');
   lightBoxWarning.id = 'lightBoxWarning';
   lightBoxWarning.style.position = 'fixed';
