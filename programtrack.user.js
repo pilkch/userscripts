@@ -26,7 +26,7 @@ if (url.substring(0, codereview.length) == codereview) {
   var elements = document.getElementsByTagName('textarea');
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
-    element.setAttribute('rows', 2 * element.getAttribute('rows'));
-    element.setAttribute('cols', 1.2 * element.getAttribute('cols'));
+    element.setAttribute('cols', Math.max(110, 1.2 * element.getAttribute('cols')));
+    element.setAttribute('rows', Math.max(12, 2 * element.getAttribute('rows')));
   }
 }
