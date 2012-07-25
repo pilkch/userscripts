@@ -85,7 +85,7 @@ function FindAndHighlight(el, regex)
   }
 }
 
-FindAndHighlight(document.body, /(Games For Windows - Live|3rd-party DRM|SecuROM™|5 machine activation limit)/g);
+FindAndHighlight(document.body, /(Games For Windows - Live|Games for Windows Live|3rd-party DRM|SecuROM™|5 machine activation limit)/g);
 
 // Show warnings
 if (drmFound.length !== 0) {
