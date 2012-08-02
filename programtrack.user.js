@@ -6,6 +6,20 @@
 // @match         http://canberra.nchsoftware.com/*
 // ==/UserScript==
 
+// Makes all text areas on the page larger
+function EnlargeTextAreas()
+{
+  // Make all textarea fields larger because they are impossibly small
+  var elements = document.getElementsByTagName('textarea');
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+    element.setAttribute('cols', Math.max(110, 1.2 *
+element.getAttribute('cols')));
+    element.setAttribute('rows', Math.max(12, 2 *
+element.getAttribute('rows')));
+  }
+}
+
 // Apply fixes for code review pages
 var codereview = "http://canberra.nchsoftware.com:120/codereview?id=";
 var url = document.URL;
@@ -21,12 +35,5 @@ if (url.substring(0, codereview.length) == codereview) {
 
   // Scroll to the top of the window so that we can read through the code review
   scroll(0, 0);
-} else {
-  // Make all textarea fields larger because they are impossibly small
-  var elements = document.getElementsByTagName('textarea');
-  for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-    element.setAttribute('cols', Math.max(110, 1.2 * element.getAttribute('cols')));
-    element.setAttribute('rows', Math.max(12, 2 * element.getAttribute('rows')));
-  }
-}
+} else EnlargeTextAreas();
+
