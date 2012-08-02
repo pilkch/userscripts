@@ -6,6 +6,18 @@
 // @match         http://canberra.nchsoftware.com/*
 // ==/UserScript==
 
+// Create a warning
+function CreateWarning(element, warning)
+{
+  // Add a warning after the title
+  var warningTitle = document.createElement("strong");
+  warningTitle.style.backgroundColor = "#FF0000";
+  warningTitle.style.color = "#000000";
+  warningTitle.innerHTML = "Warning: " + warning;
+
+  return warningTitle;
+}
+
 // Makes all text areas on the page larger
 function EnlargeTextAreas()
 {
@@ -17,6 +29,22 @@ function EnlargeTextAreas()
 element.getAttribute('cols')));
     element.setAttribute('rows', Math.max(12, 2 *
 element.getAttribute('rows')));
+  }
+}
+
+// Apply fixes for the bug report pages
+var track = "http://canberra.nchsoftware.com:120/track?trackid=";
+var url = document.URL;
+if (url.substring(0, track.length) == track) {
+  // Highlight the Assessed Work field if it has not been filled in yet
+  var assessedWork = document.getElementById('116');
+  if (assessedWork && (assessedWork.value == "")) {
+    var parent = assessedWork.parentNode;
+    if (parent) {
+      var warning = CreateWarning(assessedWork, "Assessed Work has not
+been entered");
+      parent.appendChild(warning);
+    }
   }
 }
 
