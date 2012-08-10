@@ -25,17 +25,21 @@ function EnlargeTextAreas()
   var elements = document.getElementsByTagName('textarea');
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
-    element.setAttribute('cols', Math.max(110, 1.2 *
-element.getAttribute('cols')));
-    element.setAttribute('rows', Math.max(12, 2 *
-element.getAttribute('rows')));
+    element.setAttribute('cols', Math.max(110, 1.2 * element.getAttribute('cols')));
+    element.setAttribute('rows', Math.max(12, 2 * element.getAttribute('rows')));
   }
 }
 
-// Apply fixes for the bug report pages
-var track = "http://canberra.nchsoftware.com:120/track?trackid=";
+function StartsWith(sText, sFind)
+{
+  // Return true if the start of sText is the same as sFind
+  return (sText.substring(0, sFind.length) == sFind);
+}
+
 var url = document.URL;
-if (url.substring(0, track.length) == track) {
+
+// Apply fixes for the bug report pages
+if (StartsWith(url, "http://canberra.nchsoftware.com:120/track?trackid=")) {
   // Highlight the Assessed Work field if it has not been filled in yet
   var assessedWork = document.getElementById('116');
   if (assessedWork && (assessedWork.value == "")) {
@@ -48,10 +52,9 @@ been entered");
   }
 }
 
-// Apply fixes for code review pages
-var codereview = "http://canberra.nchsoftware.com:120/codereview?id=";
-var url = document.URL;
-if (url.substring(0, codereview.length) == codereview) {
+if (StartsWith(url, "http://canberra.nchsoftware.com:120/codereview?id=")) {
+  // Apply fixes for code review pages
+
   // Set the default rating
   var rating = document.getElementById('103');
   if (rating) rating.value = "10$Not applicable (not enough to rate)";
@@ -63,5 +66,5 @@ if (url.substring(0, codereview.length) == codereview) {
 
   // Scroll to the top of the window so that we can read through the code review
   scroll(0, 0);
-} else EnlargeTextAreas();
+} else if (url != "http://canberra.nchsoftware.com:120/main") EnlargeTextAreas();
 
