@@ -45,8 +45,7 @@ if (StartsWith(url, "http://canberra.nchsoftware.com:120/track?trackid=")) {
   if (assessedWork && (assessedWork.value == "")) {
     var parent = assessedWork.parentNode;
     if (parent) {
-      var warning = CreateWarning(assessedWork, "Assessed Work has not
-been entered");
+      var warning = CreateWarning(assessedWork, "Assessed Work has not been entered");
       parent.appendChild(warning);
     }
   }
