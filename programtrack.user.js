@@ -6,6 +6,12 @@
 // @match         http://canberra.nchsoftware.com/*
 // ==/UserScript==
 
+function StartsWith(sText, sFind)
+{
+  // Return true if the start of sText is the same as sFind
+  return (sText.substring(0, sFind.length) == sFind);
+}
+
 // Create a warning
 function CreateWarning(element, warning)
 {
@@ -30,10 +36,15 @@ function EnlargeTextAreas()
   }
 }
 
-function StartsWith(sText, sFind)
+// Disable an option on a select element
+function DisableSelectItem(element, sTitle)
 {
-  // Return true if the start of sText is the same as sFind
-  return (sText.substring(0, sFind.length) == sFind);
+  // Find the item in the select options
+  var options = element.getElementsByTagName("option");
+  for (var i = 0; i < options.length; i++) {
+    // Disable this option if the lowercase texts match
+    if (options[i].value.toLowerCase() == sTitle.toLowerCase()) options[i].disabled = true;
+  }
 }
 
 var url = document.URL;
@@ -54,9 +65,20 @@ if (StartsWith(url, "http://canberra.nchsoftware.com:120/track?trackid=")) {
 if (StartsWith(url, "http://canberra.nchsoftware.com:120/codereview?id=")) {
   // Apply fixes for code review pages
 
-  // Set the default rating
   var rating = document.getElementById('103');
-  if (rating) rating.value = "10$Not applicable (not enough to rate)";
+  if (rating) {
+    // Set the default rating
+    rating.value = "10$Not applicable (not enough to rate)";
+
+    DisableSelectItem(rating, "0$------------- Select Rating ------------");
+    DisableSelectItem(rating, "3$OK. Style, comments, naming not so hot.");
+    DisableSelectItem(rating, "4$Technical 'what if' bugs. Style good.");
+    DisableSelectItem(rating, "5$Technical 'what if' bugs. Style poor.");
+    DisableSelectItem(rating, "6$Real bugs even though style is good.");
+    DisableSelectItem(rating, "7$Real bugs and style poor.");
+    DisableSelectItem(rating, "8$Dog's breakfast. What was he thinking!");
+    DisableSelectItem(rating, "9$-----------------------------------------");
+  }
 
   // Set the default button
   // This element does not have an id set so we hope that it is always the first element named "submit"
