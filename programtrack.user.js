@@ -2,7 +2,7 @@
 // @name          ProgramTrack Helper
 // @namespace     http://chris.iluo.net/userscripts/programtrack
 // @description   Pick a default rating of not applicable for code reviews and make textarea fields larger
-// @version       1.0
+// @version       1.1
 // @match         http://canberra.nchsoftware.com/*
 // ==/UserScript==
 
@@ -68,7 +68,7 @@ if (StartsWith(url, "http://canberra.nchsoftware.com:120/codereview?id=")) {
   var rating = document.getElementById('103');
   if (rating) {
     // Set the default rating
-    rating.value = "10$Not applicable (not enough to rate)";
+    rating.value = "12$Not applicable (not enough to rate)";
 
     DisableSelectItem(rating, "0$------------- Select Rating ------------");
     DisableSelectItem(rating, "3$OK. Style, comments, naming not so hot.");
@@ -78,6 +78,7 @@ if (StartsWith(url, "http://canberra.nchsoftware.com:120/codereview?id=")) {
     DisableSelectItem(rating, "7$Real bugs and style poor.");
     DisableSelectItem(rating, "8$Dog's breakfast. What was he thinking!");
     DisableSelectItem(rating, "9$-----------------------------------------");
+    DisableSelectItem(rating, "11$-----------------------------------------");
   }
 
   // Set the default button
