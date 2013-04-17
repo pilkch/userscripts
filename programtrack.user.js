@@ -36,14 +36,21 @@ function EnlargeTextAreas()
   }
 }
 
-// Disable an option on a select element
-function DisableSelectItem(element, sTitle)
+// Remove an option on a select element
+function RemoveSelectItem(element, sTitle)
 {
+  var found = [];
+
   // Find the item in the select options
   var options = element.getElementsByTagName("option");
   for (var i = 0; i < options.length; i++) {
-    // Disable this option if the lowercase texts match
-    if (options[i].value.toLowerCase() == sTitle.toLowerCase()) options[i].disabled = true;
+    // Check if the lowercase texts match
+    if (options[i].value.toLowerCase() == sTitle.toLowerCase()) found.push(options[i]);
+  }
+
+  // Remove our items
+  for (var i = 0; i < found.length; i++) {
+    found[i].parentNode.removeChild(found[i]);
   }
 }
 
@@ -70,15 +77,15 @@ if (StartsWith(url, "http://canberra.nchsoftware.com:120/codereview?id=")) {
     // Set the default rating
     rating.value = "12$Not applicable (not enough to rate)";
 
-    DisableSelectItem(rating, "0$------------- Select Rating ------------");
-    DisableSelectItem(rating, "3$OK. Style, comments, naming not so hot.");
-    DisableSelectItem(rating, "4$Technical 'what if' bugs. Style good.");
-    DisableSelectItem(rating, "5$Technical 'what if' bugs. Style poor.");
-    DisableSelectItem(rating, "6$Real bugs even though style is good.");
-    DisableSelectItem(rating, "7$Real bugs and style poor.");
-    DisableSelectItem(rating, "8$Dog's breakfast. What was he thinking!");
-    DisableSelectItem(rating, "9$-----------------------------------------");
-    DisableSelectItem(rating, "11$-----------------------------------------");
+    RemoveSelectItem(rating, "0$------------- Select Rating ------------");
+    RemoveSelectItem(rating, "3$OK. Style, comments, naming not so hot.");
+    RemoveSelectItem(rating, "4$Technical 'what if' bugs. Style good.");
+    RemoveSelectItem(rating, "5$Technical 'what if' bugs. Style poor.");
+    RemoveSelectItem(rating, "6$Real bugs even though style is good.");
+    RemoveSelectItem(rating, "7$Real bugs and style poor.");
+    RemoveSelectItem(rating, "8$Dog's breakfast. What was he thinking!");
+    RemoveSelectItem(rating, "9$-----------------------------------------");
+    RemoveSelectItem(rating, "11$-----------------------------------------");
   }
 
   // Set the default button
