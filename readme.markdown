@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 ### About
 
-Collection of userscripts Chrome, FireFox and Opera.  
+Collection of userscripts for Chrome, FireFox and Opera.  
 
 ### Usage
 
