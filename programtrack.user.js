@@ -93,6 +93,9 @@ if (StartsWith(url, "http://canberra.nchsoftware.com:120/codereview?id=")) {
   var elements = document.getElementsByName("submit");
   if (elements.length != 0) elements[0].focus();
 
+  // Now set the focus to the rating so that we can select it with the arrow keys easily
+  if (rating) rating.focus();
+
   // Scroll to the top of the window so that we can read through the code review
   scroll(0, 0);
 } else if (url != "http://canberra.nchsoftware.com:120/main") EnlargeTextAreas();
