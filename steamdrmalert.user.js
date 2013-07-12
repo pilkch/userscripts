@@ -9,28 +9,32 @@
 
 var drmFound = [];
 
+function insertAfter(newNode, sibling)
+{
+  sibling.parentNode.insertBefore(newNode, sibling.nextSibling);
+}
+
 // Show a warning on the page
 function ShowWarningOnPage()
 {
   // Add a warning after the title
-  var blockbg = document.getElementsByClassName("blockbg")[1];
+  var details_block = document.getElementsByClassName("details_block")[0];
   var warningTitle = document.createElement("strong");
   warningTitle.style.backgroundColor = "#FF0000";
   warningTitle.style.color = "#000000";
   warningTitle.innerHTML = "Warning! DRM restricted.";
 
-  blockbg.appendChild(warningTitle);
+  details_block.appendChild(warningTitle);
 
   // Add a warning at the top of the description
-  var game_area_purchase_game_wrapper = document.getElementsByClassName("game_area_purchase_game_wrapper")[0];
-  var game_area_purchase = document.getElementById("game_area_purchase");
+  var apphub_AppName = document.getElementsByClassName("apphub_AppName")[0];
   var warningDescription = document.createElement("div");
-  warningDescription.className = "game_area_purchase_game_wrapper";
+  warningDescription.className = "apphub_AppName";
   warningDescription.style.backgroundColor = "#FF0000";
   warningDescription.style.color = "#000000";
   warningDescription.innerHTML = "<strong>Warning! This product is DRM restricted. " + drmFound.join(", ") + "</strong>";
 
-  game_area_purchase.insertBefore(warningDescription, game_area_purchase_game_wrapper);
+  insertAfter(warningDescription, apphub_AppName);
 }
 
 // Shows a lightbox warning that covers the whole screen
@@ -85,7 +89,7 @@ function FindAndHighlight(el, regex)
   }
 }
 
-FindAndHighlight(document.body, /(Games For Windows - Live|Games for Windows Live|3rd-party DRM|SecuROM™|5 machine activation limit)/g);
+FindAndHighlight(document.body, /(Games For Windows - Live|Games for Windows Live|3rd-party DRM|SecuROM™|5 machine activation limit|Requires a UPlay account|UPlay)/g);
 
 // Show warnings
 if (drmFound.length !== 0) {
