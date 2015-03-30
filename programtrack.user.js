@@ -133,5 +133,4 @@ if (StartsWith(url, "http://canberra.nchsoftware.com:120/codereview?id=")) {
 
   // Scroll to the top of the window so that we can read through the code review
   scroll(0, 0);
-} else if (url != "http://canberra.nchsoftware.com:120/main") EnlargeTextAreas();
-
+} else EnlargeTextAreas();
