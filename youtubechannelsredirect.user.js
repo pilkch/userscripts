@@ -11,11 +11,13 @@ function IsBlocked(channelName)
 {
   var channelNameLowerNoSpaces = channelName.toLowerCase().replace(/\s/g, '')
   return (
+    (channelNameLowerNoSpaces == "letsgameitout") ||
     (channelNameLowerNoSpaces == "preston") ||
     (channelNameLowerNoSpaces == "prestonplayz") ||
     (channelNameLowerNoSpaces == "prestonreacts") ||
     (channelNameLowerNoSpaces == "prestonshorts") ||
     (channelNameLowerNoSpaces == "unspeakable") ||
+    (channelNameLowerNoSpaces == "unspeakable20") ||
     (channelNameLowerNoSpaces == "unspeakableplays") ||
     (channelNameLowerNoSpaces == "unspeakablereacts")
   );
@@ -23,7 +25,8 @@ function IsBlocked(channelName)
 
 // Find something like this:
 // <meta property="og:video:tag" content="mychannelnamelowercase">
-function DoCheck() {
+function CheckMetaTags()
+{
   const metas = document.getElementsByTagName('meta');
 
   for (let i = 0; i < metas.length; i++) {
@@ -38,6 +41,45 @@ function DoCheck() {
       }
     }
   }
+}
+
+// Find the upload info and the channel name within it
+//<div id="upload-info" class="style-scope ytd-video-owner-renderer">
+//  <ytd-channel-name id="channel-name" class="style-scope ytd-video-owner-renderer">
+//    <div id="container" class="style-scope ytd-channel-name">
+//      <div id="text-container" class="style-scope ytd-channel-name">
+//        <yt-formatted-string id="text" link-inherit-color="" title="" class="style-scope ytd-channel-name complex-string" ellipsis-truncate="" ellipsis-truncate-styling="" has-link-only_="">
+//          <a class="yt-simple-endpoint style-scope yt-formatted-string" spellcheck="false" href="/@thejuicemedia" dir="auto">thejuicemedia</a>
+function CheckUploadInfo()
+{
+  var uploadInfo = document.getElementById("upload-info");
+  if (uploadInfo != null) {
+    //console.log("Found upload info");
+    const endPoints = uploadInfo.getElementsByClassName('yt-simple-endpoint');
+    if (endPoints.length != 0) {
+      //console.log("Found " + endPoints.length + " endPoints");
+      // Get something like /@mychannelname
+      var atChannelName = endPoints[0].getAttribute("href");
+      //console.log("atChannelName: " + atChannelName);
+
+      // Remove the /@ characters at the front
+      var channelName = atChannelName.substring(2);
+      //console.log("channelName: " + channelName);
+
+      if (IsBlocked(channelName)) {
+        console.log("Channel is blocked, redirecting");
+        // Redirect to the main page
+        window.location.replace("https://www.youtube.com/");
+      }
+    }
+  }
+}
+
+function DoCheck()
+{
+  //console.log("DoCheck");
+  CheckMetaTags();
+  CheckUploadInfo();
 }
 
 (function() {
