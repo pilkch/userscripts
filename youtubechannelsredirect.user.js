@@ -12,6 +12,11 @@ function IsBlocked(channelName)
   var channelNameLowerNoSpaces = channelName.toLowerCase().replace(/\s/g, '')
   return (
     (channelNameLowerNoSpaces == "letsgameitout") ||
+    (channelNameLowerNoSpaces == "mrbeast") ||
+    (channelNameLowerNoSpaces == "mrbeastgaming") ||
+    (channelNameLowerNoSpaces == "mrbeast2") ||
+    (channelNameLowerNoSpaces == "beastreacts") ||
+    (channelNameLowerNoSpaces == "beastphilanthropy") ||
     (channelNameLowerNoSpaces == "preston") ||
     (channelNameLowerNoSpaces == "prestonplayz") ||
     (channelNameLowerNoSpaces == "prestonreacts") ||
