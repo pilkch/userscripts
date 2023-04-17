@@ -22,10 +22,16 @@ function IsBlockedChannel(channelName)
     (channelNameLowerNoSpaces == "mrbeast2") ||
     (channelNameLowerNoSpaces == "beastreacts") ||
     (channelNameLowerNoSpaces == "beastphilanthropy") ||
+    (channelNameLowerNoSpaces == "pewdiepie") ||
+    (channelNameLowerNoSpaces == "pewdiepiehighlights") ||
+    (channelNameLowerNoSpaces == "pewdiepiees") ||
     (channelNameLowerNoSpaces == "preston") ||
     (channelNameLowerNoSpaces == "prestonplayz") ||
     (channelNameLowerNoSpaces == "prestonreacts") ||
     (channelNameLowerNoSpaces == "prestonshorts") ||
+    (channelNameLowerNoSpaces == "ryan") ||
+    (channelNameLowerNoSpaces == "rytrahan") ||
+    (channelNameLowerNoSpaces == "ryanlol") ||
     (channelNameLowerNoSpaces == "unspeakable") ||
     (channelNameLowerNoSpaces == "unspeakable20") ||
     (channelNameLowerNoSpaces == "unspeakableplays") ||
