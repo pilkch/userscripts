@@ -7,7 +7,12 @@
 // @grant         none
 // ==/UserScript==
 
-function IsBlocked(channelName)
+function IsBlockedURL(url)
+{
+  return (url.pathname.startsWith("/shorts/"));
+}
+
+function IsBlockedChannel(channelName)
 {
   var channelNameLowerNoSpaces = channelName.toLowerCase().replace(/\s/g, '')
   return (
@@ -38,14 +43,13 @@ function CheckMetaTags()
     //console.log("Meta property: " + metas[i].getAttribute('property') + ", content: " + metas[i].getAttribute('content'));
     if (metas[i].getAttribute('property') === 'og:video:tag') {
       var channelName = metas[i].getAttribute('content');
-      if (IsBlocked(channelName)) {
-        console.log("Channel is blocked, redirecting");
-        // Redirect to the main page
-        window.location.replace("https://www.youtube.com/");
-        break;
+      if (IsBlockedChannel(channelName)) {
+        return false;
       }
     }
   }
+
+  return true;
 }
 
 // Find the upload info and the channel name within it
@@ -71,20 +75,31 @@ function CheckUploadInfo()
       var channelName = atChannelName.substring(2);
       //console.log("channelName: " + channelName);
 
-      if (IsBlocked(channelName)) {
-        console.log("Channel is blocked, redirecting");
-        // Redirect to the main page
-        window.location.replace("https://www.youtube.com/");
+      if (IsBlockedChannel(channelName)) {
+        return false;
       }
     }
   }
+
+  return true;
 }
 
 function DoCheck()
 {
   //console.log("DoCheck");
-  CheckMetaTags();
-  CheckUploadInfo();
+  if (IsBlockedURL(window.location)) {
+    console.log("Page is blocked, redirecting");
+    // Redirect to the main page
+    window.location.replace("https://www.youtube.com/");
+  } else if (!CheckMetaTags()) {
+    console.log("Channel is blocked, redirecting");
+    // Redirect to the main page
+    window.location.replace("https://www.youtube.com/");
+  } else if (!CheckUploadInfo()) {
+    console.log("Channel is blocked, redirecting");
+    // Redirect to the main page
+    window.location.replace("https://www.youtube.com/");
+  }
 }
 
 (function() {
