@@ -24,6 +24,7 @@ function IsBlockedChannel(channelName)
     (channelNameLowerNoSpaces == "mrbeast2") ||
     (channelNameLowerNoSpaces == "beastreacts") ||
     (channelNameLowerNoSpaces == "beastphilanthropy") ||
+    (channelNameLowerNoSpaces == "elementanimation") ||
     (channelNameLowerNoSpaces == "pewdiepie") ||
     (channelNameLowerNoSpaces == "pewdiepiehighlights") ||
     (channelNameLowerNoSpaces == "pewdiepiees") ||
