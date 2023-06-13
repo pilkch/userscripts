@@ -2,7 +2,7 @@
 // @name          Youtube Remove Shorts from Subscriptions
 // @namespace     https://chris.iluo.net/
 // @description   Look for shorts videos on your subscriptions page and hide them
-// @version       1.0
+// @version       1.2
 // @match         https://www.youtube.com/feed/subscriptions
 // @grant         none
 // ==/UserScript==
