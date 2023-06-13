@@ -18,6 +18,9 @@ function IsBlockedChannel(channelName)
 {
   var channelNameLowerNoSpaces = channelName.toLowerCase().replace(/\s/g, '')
   return (
+    (channelNameLowerNoSpaces == "alia") ||
+    (channelNameLowerNoSpaces == "aliaplays") ||
+    (channelNameLowerNoSpaces == "morealia") ||
     (channelNameLowerNoSpaces == "letsgameitout") ||
     (channelNameLowerNoSpaces == "mrbeast") ||
     (channelNameLowerNoSpaces == "mrbeastgaming") ||
