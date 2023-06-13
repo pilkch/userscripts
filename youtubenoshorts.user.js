@@ -26,22 +26,22 @@ function IsShort(gridItem)
 }
 
 // Find end points as above, but check if the href points to a shorts URL
-// <ytd-item-section-renderer class="style-scope ytd-section-list-renderer">
+// <ytd-rich-item-renderer class="style-scope ytd-rich-grid-row">
 // ...
-// <ytd-grid-video-renderer class="style-scope ytd-grid-renderer" lockup="true">
+// <div id="content" class="style-scope ytd-rich-item-renderer">
 // ...
-// <a id="thumbnail" class="yt-simple-endpoint inline-block style-scope ytd-thumbnail" aria-hidden="true" tabindex="-1" rel="null" href="/shorts/y61ixvy7SV8">
+// <a id="thumbnail" class="yt-simple-endpoint inline-block style-scope ytd-thumbnail" aria-hidden="true" tabindex="-1" rel="null" href="/shorts/Kk1h5WueEFg">
 function RemoveShorts()
 {
   //console.log("RemoveShorts");
-  var sections = document.querySelectorAll("ytd-item-section-renderer");
+  var sections = document.querySelectorAll("ytd-rich-item-renderer");
   if (sections != null) {
     console.log("Found sections");
     for (let s = 0; s < sections.length; s++) {
       //console.log("Section " + s);
       var gridItemsToRemove = [];
 
-      var gridItems = sections[s].getElementsByClassName('ytd-grid-video-renderer');
+      var gridItems = sections[s].getElementsByClassName('ytd-rich-item-renderer');
       if (gridItems != null) {
         for (let d = 0; d < gridItems.length; d++) {
           var gridItem = gridItems[d];
