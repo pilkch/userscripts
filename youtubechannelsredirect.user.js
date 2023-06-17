@@ -2,7 +2,7 @@
 // @name          Youtube Channels Redirect
 // @namespace     https://chris.iluo.net/
 // @description   Redirect back to https://www.youtube.com/ when the current video channel name is in a blocklist
-// @version       1.2
+// @version       1.3
 // @downloadURL   https://github.com/pilkch/userscripts/raw/master/youtubechannelsredirect.user.js
 // @updateURL     https://github.com/pilkch/userscripts/raw/master/youtubechannelsredirect.user.js
 // @match         https://www.youtube.com/*
