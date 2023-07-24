@@ -2,7 +2,7 @@
 // @name           Auspost Track
 // @namespace      http://chris.iluo.net/userscripts/ausposttrack
 // @description    Change the tracking numbers into hyperlinks for bricklink
-// @version        0.9
+// @version        1.0
 // @include        https://www.bricklink.com/orderDetail*
 // @grant          none
 // ==/UserScript==
@@ -32,7 +32,12 @@ function ProcessBrickLink()
       console.log("Cell " + i + " Found tracking number");
       // Get the next element which is the tracking number
       var next = cells[i].nextElementSibling;
-      var trackingNumber = next.textContent;
+      var trackingNumberRaw = next.textContent;
+
+      // Trim whitespace
+      var trackingNumber = trackingNumberRaw.replace(/\s+/g, " ").trim();
+
+      // Clear the node
       next.textContent = "";
 
       // Create a link to the auspost website
@@ -51,4 +56,3 @@ var current_url = document.location.href;
 if (current_url.startsWith("https://www.bricklink.com/orderDetail")) {
   ProcessBrickLink();
 }
-
